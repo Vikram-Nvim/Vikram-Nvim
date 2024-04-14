@@ -27,7 +27,8 @@ return {
 
     vscode.lazy_load()
     vscode.lazy_load({ paths = { "./lua/snippets" } })
-    ls.filetype_extend({"javascriptreact", "typescriptreact",}, { "html" })
+    ls.filetype_extend("javascriptreact", { "html" })
+    ls.filetype_extend("typescriptreact", { "html" })
     ls.config.set_config {
       history = true,
       delete_check_events = "TextChanged",

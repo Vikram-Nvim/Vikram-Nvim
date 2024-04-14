@@ -14,6 +14,12 @@ return {
     end
   },
   {
+    "folke/trouble.nvim",
+    branch = "dev",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = {},
+  },
+  {
     'kevinhwang91/nvim-ufo', 
     dependencies = 'kevinhwang91/promise-async',
     config = function()
@@ -41,6 +47,46 @@ return {
     end,
   },
   {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
+  },
+  {
+    'mg979/vim-visual-multi',
+    branch = 'master'
+  },
+  {
+    "numToStr/FTerm.nvim",
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      local keymap = vim.api.nvim_set_keymap
+      local default_opts = { noremap = true, silent = true }
+      keymap("n", "<leader>gg", "<cmd>LazyGit<CR>", default_opts)
+    end
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {},
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+    end
+  },
+
+  {
     'rmagatti/auto-session',
     config = function()
       require("auto-session").setup({
@@ -56,6 +102,7 @@ return {
       vim.keymap.set("n", "<leader>ls", require("auto-session.session-lens").search_session, { desc="Session Manager", noremap = true })
     end
   },
+
   {
     'jvgrootveld/telescope-zoxide',
     dependencies = {
@@ -68,10 +115,12 @@ return {
       vim.keymap.set("n", "<leader>zf", telescope.extensions.zoxide.list, { desc = "Zoxide Find" })
     end
   },
+
   {
     "kdheepak/lazygit.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
+
   {
     'mfussenegger/nvim-dap',
     dependencies = {
@@ -82,11 +131,11 @@ return {
           require("dapui").setup()
         end
       },
-      -- {
-      --   "microsoft/vscode-js-debug",
-      --   opt = true,
-      --   build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-      -- }
+      {
+        "microsoft/vscode-js-debug",
+        opts = true,
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+      },
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
@@ -94,7 +143,7 @@ return {
             adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
           })
 
-          for _, language in ipairs({ "typescript", "javascript" }) do
+          for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
             require("dap").configurations[language] = {
               {
                 type = "pwa-node",
@@ -131,4 +180,51 @@ return {
       end
     end
   },
+
+  {
+    "Pocco81/auto-save.nvim",
+    enabled = false,
+    config = function()
+      require("auto-save").setup()
+    end,
+  },  
+
+  {
+    "aurum77/live-server.nvim",
+    enabled = false,
+    run = function()
+      require"live_server.util".install()
+    end,
+    cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
+  },
+
+  {
+    "max397574/colortils.nvim",
+    cmd = "Colortils",
+    config = function()
+      require("colortils").setup({
+        register = "+",
+        color_preview =  "█ %s",
+        default_format = "hex",
+        border = "rounded",
+        mappings = {
+          increment = "l",
+          decrement = "h",
+          increment_big = "L",
+          decrement_big = "H",
+          min_value = "0",
+          max_value = "$",
+          set_register_default_format = "<cr>",
+          set_register_cjoose_format = "g<cr>",
+          replace_default_format = "<m-cr>",
+          replace_choose_format = "g<m-cr>",
+          export = "E",
+          set_value = "c",
+          transparency = "T",
+          choose_background = "B",
+        }
+      })
+    end
+  },
+
 }

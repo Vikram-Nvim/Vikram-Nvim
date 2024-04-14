@@ -186,6 +186,17 @@ function M.setup()
       w = { "<cmd>ObsidianWorkspace<CR>", "Switch Workspace <Name>" },
       p = { "<cmd>ObsidianPasteImg<CR>", "Pase Img <Img Name>" },
     },
+
+    T = {
+      name = "Trouble",
+      d = { "<cmd>Trouble diagnostics toggle<cr>", "Diagonostics" },
+      b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagonostics" },
+      s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
+      r = { "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "Definitions / References" },
+      l = { "<cmd>Trouble loclist toggle<cr>", "Location List" },
+      q = { "", "Quickfix List" },
+    },
+
   }
 
   whichkey.setup(conf)

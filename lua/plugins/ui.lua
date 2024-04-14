@@ -3,7 +3,6 @@ return {
    'glepnir/dashboard-nvim',
    event = 'VimEnter',
    dependencies = {{'nvim-tree/nvim-web-devicons'}},
-
     config = function()
       require('dashboard').setup {
         theme = 'hyper',
@@ -58,6 +57,7 @@ return {
       }
     end
   },
+
   --Greatest UI plugin for performance
   {
     "folke/noice.nvim",
@@ -95,20 +95,22 @@ return {
       },
     },
   },
+
   {
     'stevearc/dressing.nvim',
     lazy = true,
-  init = function()
-    vim.ui.select = function(...)
-      require("lazy").load({ plugins = { "dressing.nvim" } })
-      return vim.ui.select(...)
-    end
-    vim.ui.input = function(...)
-      require("lazy").load({ plugins = { "dressing.nvim" } })
-      return vim.ui.input(...)
-    end
-  end,
+    init = function()
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
   },
+
   {
     'rcarriga/nvim-notify',
     opts = {
@@ -129,9 +131,11 @@ return {
       top_down = false,
     },
   },
+
   {
     "RRethy/vim-illuminate",
   },
+
   --FileManager
   { 
     "nvim-neo-tree/neo-tree.nvim",
@@ -143,6 +147,7 @@ return {
     },
     -- vim.keymap.set('n', '<leader>e', '<cmd>Neotree focus<CR>', {})
   },
+
   --Indenting
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -170,6 +175,7 @@ return {
       }
     },
   },
+
   {
     "echasnovski/mini.indentscope",
     version = false,
@@ -201,8 +207,9 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
+    lazy = false,
     dependencies = {
-      'nvim-tree/nvim-web-devicons', opt = true
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       local colors = {
@@ -317,5 +324,13 @@ return {
         extensions = { "lazy", "mason", "fzf", "oil", "neo-tree", "trouble", },
       }
     end
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {}
+  },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
   },
 }
