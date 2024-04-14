@@ -1,0 +1,13 @@
+{
+  "use client": {
+    "prefix": "useclient",
+    "body": ["\"use client\""],
+    "description": ""
+  },
+
+  "ReactFunctionComponent": {
+    "prefix": "rfc",
+    "body": ["transform: translate(${1:-50%}, ${2:-50%};)"],
+    "description": ""
+  }
+}

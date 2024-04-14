@@ -23,6 +23,7 @@ return {
           "prettier",
           -- "stylua",
           "eslint_d",
+          "js-debug-adapter",
         },
       })
     end
@@ -66,14 +67,14 @@ return {
       lspconfig.html.setup({
         capabilities = capabilities,
       })
-      lspconfig.tsserver.setup({
-        capabilities = capabilities,
-        -- init_options = {
-        --   preferences = {
-        --     disableSuggestions = true,
-        --   }
-        -- },
-      })
+      -- lspconfig.tsserver.setup({
+      --   capabilities = capabilities,
+      --   -- init_options = {
+      --   --   preferences = {
+      --   --     disableSuggestions = true,
+      --   --   }
+      --   -- },
+      -- })
       lspconfig.cssls.setup({
         capabilities = capabilities,
       })
@@ -106,12 +107,13 @@ return {
       keymap('n', 'gd', vim.lsp.buf.definition, {})
       keymap('n', 'gr', vim.lsp.buf.references, {})
       keymap({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+
     end
-  }
+  },
   -- Test
-  -- {
-  --   "pmizio/typescript-tools.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  --   opts = {},
-  -- }
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  }
 }
