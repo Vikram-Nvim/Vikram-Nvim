@@ -31,8 +31,24 @@ return {
       "nvim-telescope/telescope-github.nvim",
     },
     config = function()
-      require("telescope").setup({
 
+      --Test 
+      local actions = require("telescope.actions")
+      local actions_state = require("telescope.actions.state")
+
+      function enter(prompt_bufnr)
+        local selection = actions_state.get_selected_entry()
+        local cmd = 'colorscheme ' .. selection[1]
+        vim.cmd(cmd)
+
+        local init = vim.fn.expand("~/.config/nvim/init.lua")
+        local job_cmd = "sed -i '$d' " .. init .. " && echo '".. cmd .. "' >> " .. init 
+        vim.cmd('!echo "testing2" >> ~/.config/nvim/init.lua')
+        -- vim.fn.jobstart(job_cmd)
+        actions.close(prompt_bufnr)
+      end
+
+      require("telescope").setup({
         defaults = {
           thene = "custom", 
           results_title = false,
@@ -71,6 +87,9 @@ return {
             require("telescope.themes").get_cursor(),
           },
         },
+        mappings = {
+          n = { ["q"] = require("telescope.actions").close },
+        },
       })
       -- require('telescope').load_extension('colorscheme')
       -- require("telescope").load_extension("fzf")
@@ -78,20 +97,6 @@ return {
       require("telescope").load_extension("ui-select")
       require('telescope').load_extension('media_files')
       -- require('telescope').load_extension('dap')
-
-      --Test 
-      local actions = require("telescope.actions")
-      local actions_state = require("telescope.actions.state")
-
-      function enter(prompt_bufnr)
-        local selection = actions_state.get_selected_entry()
-        local cmd = 'colorscheme ' .. selection[1]
-        vim.cmd(cmd)
-        local init = vim.fn.expand("~/.config/nvim/init.lua")
-        local job_cmd = "sed -i '$d' " .. init .. " && echo '".. cmd .. "' >> " .. init 
-        vim.fn.jobstart(job_cmd)
-        actions.close(prompt_bufnr)
-      end
 
     end,
   },

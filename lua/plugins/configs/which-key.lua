@@ -68,6 +68,8 @@ function M.setup()
     ["D"] = { "<cmd>Dashboard<CR>", "Dashboard" },
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
+
+    --Neotree
     ["e"] = { "<cmd>Neotree focus<CR>", "NeoTree" },
     ["c"] = { "<cmd>Neotree close<CR>", "Neotree Close" },
     -- ["c"] = { "<cmd>Ex<CR>", "" },
@@ -195,6 +197,15 @@ function M.setup()
       r = { "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "Definitions / References" },
       l = { "<cmd>Trouble loclist toggle<cr>", "Location List" },
       q = { "", "Quickfix List" },
+    },
+
+    S = {
+      name = "Trouble",
+      s = { "<cmd>SessionSave<cr>", "Save" },
+      r = { "<cmd>SessionRestore<cr>", "Restore" },
+      d = { "<cmd>SessionDelete<cr>", "Delete" },
+      f = { "<cmd>Autosession search<cr>", "Find" },
+      D = { "<cmd>Autosession delete<cr>", "Find and Delete" },
     },
 
   }

@@ -96,10 +96,10 @@ return {
           buftypes_to_ignore = {},
           load_on_setup = true,
           theme_conf = { border = true },
-          previewer = false,
+          previewer = true,
         }
       })
-      vim.keymap.set("n", "<leader>ls", require("auto-session.session-lens").search_session, { desc="Session Manager", noremap = true })
+      vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
     end
   },
 

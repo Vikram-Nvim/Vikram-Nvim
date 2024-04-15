@@ -15,6 +15,7 @@ return {
       })
     end
   },
+
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     config = function()
@@ -28,6 +29,7 @@ return {
       })
     end
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -44,12 +46,14 @@ return {
       })
     end
   },
+
   { 
     "folke/neodev.nvim", 
     config = function()
       require("neodev").setup()
     end
   },
+
   {
     "neovim/nvim-lspconfig",
     -- event = { "BufReadPre", "BufNewFile" },
@@ -110,10 +114,21 @@ return {
 
     end
   },
+    
   -- Test
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
-  }
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts) 
+      require('lsp_signature').setup(opts) 
+    end
+  },
+
 }

@@ -257,7 +257,7 @@ return {
       require('lualine').setup {
         options = {
           -- theme = "catppuccin", --           
-          theme = custom,
+          -- theme = custom,
           globalstatus = true,
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
@@ -271,6 +271,7 @@ return {
             { 'branch', icon = {"󰊢", align="left",}},
           },
           lualine_c = {
+            {require('auto-session.lib').current_session_name},
             { 'filesize', icon = {"󰈔", align="left",}},
             { 'diagnostics', separator = { left = '', right = '  ' }, },
           },
@@ -284,14 +285,6 @@ return {
           lualine_z = {
             { 'location', icon = {"󰦨", align="right",}, separator = { left = '  ', right = '  ' }, },
           },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {},
         },
         tabline = {
           lualine_a = {
@@ -321,16 +314,45 @@ return {
           lualine_y = {},
           lualine_z = {}
         },
-        extensions = { "lazy", "mason", "fzf", "oil", "neo-tree", "trouble", },
+        extensions = {
+          "lazy",
+          "mason",
+          "fzf",
+          "oil",
+          "neo-tree",
+          "trouble",
+        },
       }
     end
   },
+
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true, 
+        stop_eof = true,   
+        use_local_scrolloff = false,
+        respect_scrolloff = false, 
+        cursor_scrolls_alone = true,
+        easing_function = nil,     
+        pre_hook = nil,           
+        post_hook = nil,         
+      })
+    end
+  },
+
   {
     "lewis6991/gitsigns.nvim",
     opts = {}
   },
+
   {
     'stevearc/dressing.nvim',
     opts = {},
   },
+
 }

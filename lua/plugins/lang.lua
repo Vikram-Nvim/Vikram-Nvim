@@ -15,6 +15,7 @@ return {
         },
       },
     },
+
     {
       "NvChad/nvim-colorizer.lua",
       opts = {
@@ -23,7 +24,9 @@ return {
         },
       },
     },
+
   },
+
   {
     'laytan/tailwind-sorter.nvim',
     dependencies = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
@@ -36,6 +39,14 @@ return {
       })
     end
   },
+
+  -- Javascript / Typescript
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   config = function()
+  --     require("nvim-ts-autotag").setup()
+  --   end,
+  -- },
 
   --Note Taking with Neorg
   {
@@ -82,4 +93,7 @@ return {
       }
     }
   },
+
+  --Markdown
+
 }
