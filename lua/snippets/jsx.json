@@ -5,15 +5,9 @@
     "description": ""
   },
 
-  "suppressHydrationWarning": {
-    "prefix": "suppressHydrationWarning",
-    "body": ["suppressHydrationWarning"],
-    "description": ""
-  },
-
-  "<></>": {
-    "prefix": "<",
-    "body": ["<>", "$1", "</>"],
+  "fregment": {
+    "prefix": "freg",
+    "body": ["\t<>", "\t\t$0", "\t</>"],
     "description": ""
   }
 }
