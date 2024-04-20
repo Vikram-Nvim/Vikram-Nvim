@@ -1,4 +1,10 @@
 return {
+  --HTML 
+  {
+    'mattn/emmet-vim',
+    enabled = false
+  },
+
   --Tailwind
   {
     {
@@ -9,6 +15,7 @@ return {
         },
       },
     },
+
     {
       "NvChad/nvim-colorizer.lua",
       opts = {
@@ -17,36 +24,76 @@ return {
         },
       },
     },
+
   },
+
   {
     'laytan/tailwind-sorter.nvim',
     dependencies = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
     build = 'cd formatter && npm i && npm run build',
-    config = true,
-    -- opts = {
-    --   on_save_enabled = true,
-    -- }
-  },
-  --Note Taking witb Neorg
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {},
-          ["core.concealer"] = {},
-          ["core.dirman"] = {
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-              default_workspace = "notes",
-            },
-          },
-        },
-      }
+      require('tailwind-sorter').setup({
+        on_save_enabled = false,
+        on_save_pattern = { '*.html', '*.js', '*.jsx', '*.tsx', '*.twig', '*.hbs', '*.php', '*.heex', '*.astro' },
+        node_path = 'node',
+      })
     end
   },
+
+  -- Javascript / Typescript
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   config = function()
+  --     require("nvim-ts-autotag").setup()
+  --   end,
+  -- },
+
+  --Note Taking with Neorg
+  {
+    "nvim-neorg/neorg",
+    enabled = false,
+    lazy = false,
+    version = "*",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      load = {
+        ["core.defaults"] = {},
+        ["core.concealer"] = {},
+        ["core.dirman"] = {
+          config = {
+            workspaces = {
+              notes = "~/notes",
+            },
+            default_workspace = "notes",
+          },
+        },
+      },
+    }
+  },
+
+  -- Note Taking with Obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          path = "~/notes",
+        },
+        {
+          name = "work",
+          path = "~/notes/work",
+        },
+      }
+    }
+  },
+
+  --Markdown
+
 }

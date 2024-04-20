@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    -- vim.lsp.set_log_level("off"),
+    vim.lsp.set_log_level("off"),
     -- vim.lsp.set_log_level("debug"), 
     config = function()
       require("mason").setup({
@@ -15,6 +15,7 @@ return {
       })
     end
   },
+
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     config = function()
@@ -23,10 +24,12 @@ return {
           "prettier",
           -- "stylua",
           "eslint_d",
+          "js-debug-adapter",
         },
       })
     end
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -43,9 +46,17 @@ return {
       })
     end
   },
+
+  { 
+    "folke/neodev.nvim", 
+    config = function()
+      require("neodev").setup()
+    end
+  },
+
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -57,21 +68,26 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-    lspconfig.html.setup({
-      capabilities = capabilities,
-    })
-    lspconfig.tsserver.setup({
-      capabilities = capabilities,
-    })
-    lspconfig.cssls.setup({
-      capabilities = capabilities,
-    })
-    lspconfig.tailwindcss.setup({
-      capabilities = capabilities,
-    })
-    -- lspconfig.emmet_ls.setup({
-    --   capabilities = capabilities,
-    -- })
+      lspconfig.html.setup({
+        capabilities = capabilities,
+      })
+      -- lspconfig.tsserver.setup({
+      --   capabilities = capabilities,
+      --   -- init_options = {
+      --   --   preferences = {
+      --   --     disableSuggestions = true,
+      --   --   }
+      --   -- },
+      -- })
+      lspconfig.cssls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+      })
+      -- lspconfig.emmet_ls.setup({
+      --   capabilities = capabilities,
+      -- })
       -- lspconfig.lua_ls.setup({
       --   capabilities = capabilities,
       --   settings = { -- custom settings for lua
@@ -91,10 +107,29 @@ return {
       --   },
       -- })
 
-      keymap('n', 'K', vim.lsp.buf.hover, {})
-      keymap('n', 'gd', vim.lsp.buf.definition, {})
-      keymap('n', 'gr', vim.lsp.buf.references, {})
-      keymap({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+      keymap('n', 'K', vim.lsp.buf.hover, {desc = "Hover"})
+      keymap('n', 'gd', vim.lsp.buf.definition, {desc = "Definition"})
+      keymap('n', 'gr', vim.lsp.buf.references, {desc = "Reference"})
+      keymap('n', 'rn', vim.lsp.buf.rename, {desc = "Rename"})
+      -- keymap({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {desc = "Code Action"})
+
     end
-  }
+  },
+    
+  -- Test
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts) 
+      require('lsp_signature').setup(opts) 
+    end
+  },
+
 }

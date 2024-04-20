@@ -65,34 +65,41 @@ function M.setup()
   }
 
   local mappings = {
+    --NOTE: Dashboard
     ["D"] = { "<cmd>Dashboard<CR>", "Dashboard" },
+
+    --NOTE: Actions
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ["e"] = { "<cmd>Neotree focus<CR>", "NeoTree" },
-    ["c"] = { "<cmd>Neotree close<CR>", "Neotree Close" },
-    -- ["c"] = { "<cmd>Ex<CR>", "" },
-  
     ["x"] = { "<cmd>bd!<CR>", "Close Buffer" },
     ["X"] = { "<cmd>%bd|e#|bd#<CR>", "Close all Buffer" },
     ["/"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "Comment  Toggle" },
 
     ["<leader>"] = { "=ap", "Format" },
 
-    --Terminal
+
+    --NOTE: Neotree
+    ["e"] = { "<cmd>Neotree focus<CR>", "NeoTree" },
+    ["c"] = { "<cmd>Neotree close<CR>", "Neotree Close" },
+    -- ["c"] = { "<cmd>Ex<CR>", "" },
+    --NOTE: Terminal
     ["<A-t>"] = { '<CMD>lua require("FTerm").toggle()<CR>', "Terminal" },
     ["<A-t>"] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', "Terminal" },
-    --Oil File Browser
+    --NOTE: Oil File Browser
     ["-"] = { "<CMD>Oil<CR>", "Files" },
 
-    --Ufo Folds
+    --NOTE: Ufo Folds
     ["a"] = { "za", "Toggle Fold" },
     ["A"] = { "zA", "Toggle Folds" },
 
-    --LazyGit
+    --NOTE: LazyGit
     ["g"] = { "<cmd>LazyGit<CR>", "LazyGit" },
 
-    --TreeJS
+    --NOTE: TreeJS
     ["m"] = { "<cmd>lua require('treesj').toggle()<CR>", "TSJ Toggle" },
+
+    --NOTE: Spell 
+    ["="] = { "z=", "Spelling Suggestions" },
 
     z = {
       name = "Lazy",
@@ -106,11 +113,11 @@ function M.setup()
       r = { "<cmd>Lazy restore<cr>", "Restore" },
     },
 
-    --Telescope
+    --NOTE: Telescope
     f = {
       name = "Telescope",
       p = { "<cmd>Telescope planets<CR>", "Find Planets" },
-      c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
+      t = { "<cmd>Telescope themes<CR>", "Themes" },
       h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
       k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
       f = { "<cmd>Telescope find_files<cr>", "Find Files" },
@@ -124,7 +131,7 @@ function M.setup()
       m = { "<cmd>Telescope media_files<CR>", "Find Media Files" },
     },
 
-    o = {
+    a = {
       name = "ChatGPT",
       o = { "<cmd>ChatGPT<CR>", "ChatGPT Open" },
       a = { "<cmd>ChatGPTActAs<CR>", "ChatGPT ActAs" },
@@ -150,6 +157,71 @@ function M.setup()
       n = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Next" },
       f = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "First" },
     },
+
+    t = {
+      name = "TSTools",
+      o = { "<cmd>TSToolsOrganizeImports<cr>", "Organize" },
+      s = { "<cmd>TSToolsSortImports<cr>", "Sort" },
+      r = { "<cmd>TSToolsRemoveUnusedImports<cr>", "Remove Unused" },
+      R = { "<cmd>TSToolsRemoveUnused<cr>", "Remove Unused Statement" },
+      a = { "<cmd>TSToolsAddMissingImports<cr>", "Add Missing Imports" },
+      f = { "<cmd>TSToolsFixAll<cr>", "Fix Errors" },
+      d = { "<cmd>TSToolsGoToSourceDefinition<cr>", "Source Definition" },
+      r = { "<cmd>TSToolsRenameFile<cr>", "Rename File" },
+      R = { "<cmd>TSToolsFileReferences<cr>", "Find File References" },
+    },
+
+    o = {
+      name = "Obsodian",
+      n = { "<cmd>ObsidianNew<CR>", "Create New <Create>" },
+      o = { "<cmd>ObsidianOpen<CR>", "Open <Title>" },
+      s = { "<cmd>ObsidianQuickSwitch<CR>", "Quick Switch" },
+      S = { "<cmd>ObsidianSearch<CR>", "Search <Name>" },
+      c = { "<cmd>ObsidianToggleCheckbox<CR>", "Toggle Checkbox" },
+      f = { "<cmd>ObsidianFollowLink<CR>", "Follow Link" },
+      b = { "<cmd>ObsidianBacklinks<CR>", "Back Links" },
+      t = { "<cmd>ObsidianTags<CR>", "Tag [Tag]" },
+      T = { "<cmd>ObsidianToday<CR>", "Today <Day>" },
+      y = { "<cmd>ObsidianYesterday<CR>", "Yesterday" },
+      Y = { "<cmd>ObsidianTomorrow<CR>", "Tomorrow" },
+      x = { "<cmd>ObsidianTemplate<CR>", "Template <Name>" },
+      l = { "<cmd>ObsidianLink<CR>", "Link <Name>" },
+      L = { "<cmd>ObsidianLinkNew<CR>", "New Link <Name>" },
+      v = { "<cmd>ObsidianLinks<CR>", "Links" },
+      r = { "<cmd>ObsidianRename<CR>", "Rename <New Name>" },
+      e = { "<cmd>ObsidianExtractNote<CR>", "Extract Selected to New" },
+      w = { "<cmd>ObsidianWorkspace<CR>", "Switch Workspace <Name>" },
+      p = { "<cmd>ObsidianPasteImg<CR>", "Pase Img <Img Name>" },
+    },
+
+    T = {
+      name = "Trouble",
+      d = { "<cmd>Trouble diagnostics toggle<cr>", "Diagonostics" },
+      b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagonostics" },
+      s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
+      r = { "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "Definitions / References" },
+      l = { "<cmd>Trouble loclist toggle<cr>", "Location List" },
+      q = { "", "Quickfix List" },
+    },
+
+    S = {
+      name = "Sessions",
+      s = { "<cmd>SessionSave<cr>", "Save" },
+      r = { "<cmd>SessionRestore<cr>", "Restore" },
+      d = { "<cmd>SessionDelete<cr>", "Delete" },
+      f = { "<cmd>Autosession search<cr>", "Find" },
+      D = { "<cmd>Autosession delete<cr>", "Find and Delete" },
+    },
+
+    l = {
+      name = "Lsp",
+      k = { vim.lsp.buf.hover, "Hover" },
+      r = { vim.lsp.buf.rename, "Rename" },
+      d = { vim.lsp.buf.definition, "Definition" },
+      f = { vim.lsp.buf.references, "References" },
+      c = { vim.lsp.buf.code_action, "Code Action" },
+    },
+
   }
 
   whichkey.setup(conf)
