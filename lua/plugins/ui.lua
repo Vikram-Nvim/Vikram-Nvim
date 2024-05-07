@@ -2,9 +2,9 @@ return {
  {
    'glepnir/dashboard-nvim',
    event = 'VimEnter',
-   dependencies = {{'nvim-tree/nvim-web-devicons'}},
+   dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require('dashboard').setup {
+      require('dashboard').setup({
         theme = 'hyper',
         config = {
           header = {
@@ -54,17 +54,18 @@ return {
           },
           footer = {}
         },
-      }
-    end
+      })
+    end,
   },
 
-  --Greatest UI plugin for performance
+  --NOTE: Greatest UI plugin for performance
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
       lsp = {
@@ -91,7 +92,8 @@ return {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = true,
+        inc_rename = false,
+        lsp_doc_border = false,
       },
     },
   },
@@ -145,7 +147,6 @@ return {
       "nvim-tree/nvim-web-devicons", 
       "MunifTanjim/nui.nvim",
     },
-    -- vim.keymap.set('n', '<leader>e', '<cmd>Neotree focus<CR>', {})
   },
 
   --Indenting
@@ -254,9 +255,10 @@ return {
           z = { fg = colors.fg, bg = colors.bg },
         },
       }
-      require('lualine').setup {
+      require('lualine').setup({
+          --NOTE: Uniqe separators           
         options = {
-          -- theme = "catppuccin", --           
+          -- theme = "catppuccin", 
           -- theme = custom,
           globalstatus = true,
           component_separators = { left = '', right = '' },
@@ -322,7 +324,7 @@ return {
           "neo-tree",
           "trouble",
         },
-      }
+      })
     end
   },
 
@@ -331,8 +333,6 @@ return {
     event = "WinScrolled",
     config = function()
       require('neoscroll').setup({
-        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
         hide_cursor = true, 
         stop_eof = true,   
         use_local_scrolloff = false,
@@ -342,6 +342,18 @@ return {
         pre_hook = nil,           
         post_hook = nil,         
       })
+
+      local t = {}
+      t['<C-k>'] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
+      t['<C-j>'] = {'scroll', { 'vim.wo.scroll', 'true', '250'}}
+      t['<C-h>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '450'}}
+      t['<C-l>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '450'}}
+      t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
+      t['<C-e>'] = {'scroll', { '0.10', 'false', '100'}}
+      t['zt']    = {'zt', {'250'}}
+      t['zz']    = {'zz', {'250'}}
+      t['zb']    = {'zb', {'250'}}
+      require('neoscroll.config').set_mappings(t)
     end
   },
 
