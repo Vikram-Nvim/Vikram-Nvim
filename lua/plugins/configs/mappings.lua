@@ -5,8 +5,8 @@ function M.setup()
   --NOTE: Keymaps for Normal Mode without Prefix
   wk.register({
     [";"] = { ":", "Cmd" },
-    ["<Tab>"] = { "<cmd>bnext<ce>", "Next Buffer" },
-    ["<S-Tab>"] = { "<cmd>bprevious<ce>", "Previous Buffer" },
+    ["<Tab>"] = { "<cmd>bnext<cr>", "Next Buffer" },
+    ["<S-Tab>"] = { "<cmd>bprevious<cr>", "Previous Buffer" },
     ["-"] = { "<cmd>lua MiniFiles.open()<cr>", "Files" },
     -- map("n", "<C-d>", "<C-d>zz", default_opts)
     -- map("n", "<C-u>", "<C-u>zz", default_opts)
@@ -14,8 +14,8 @@ function M.setup()
     -- map("n", "N", "Nzzzv", default_opts)
     -- map("n", "-", "<CMD>Oil<CR>", { desc = "Files" })
     ["<A-t>"] = { '<cmd>lua require("FTerm").toggle()<cr>', "Terminal" },
-    ["<A-v>"] = { "<cmd>vsplit<ce>", "Split Vertically" },
-    ["<A-h>"] = { "<cmd>split<ce>", "Split Horizontally" },
+    ["<A-v>"] = { "<cmd>vsplit<cr>", "Split Vertically" },
+    ["<A-h>"] = { "<cmd>split<cr>", "Split Horizontally" },
 
   }, { mode = "n" })
 
@@ -74,6 +74,12 @@ function M.setup()
       ["Z"] = { require("telescope").extensions.zoxide.list, "zoxide find" },
       --NOTE: Pick Color 
       ["C"] = { "<CMD>PickColor<CR>", "Pick Color" },
+      --NOTE: MarkdownPreview
+      ["p"] = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview" },
+      --NOTE: Twilight
+      ["h"] = { "<CMD>Twilight<CR>", "Toggle Twilight" },
+      --NOTE: Barbecue 
+      ["B"] = { "<CMD>Barbecue<CR>", "Barbecue" },
 
       --NOTE: Keybind Groups
 

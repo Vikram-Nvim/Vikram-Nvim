@@ -209,4 +209,9 @@ return {
     opts = {}
   },
 
+  {
+    "ahmedkhalf/project.nvim",
+    opts = {},
+  },
+
 }

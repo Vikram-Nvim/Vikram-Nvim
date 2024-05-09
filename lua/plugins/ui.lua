@@ -320,29 +320,29 @@ return {
             },
           }
         },
-        winbar = {
-          lualine_a = {},
-          lualine_b = {
-            {
-                "navic",
-                color_correction = nil,
-                navic_opts = nil,
-                separator = { left = '   ', right = '   ' },
-            }
-          },
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {}
-        },
-        inactive_winbar = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {}
-        },
+        -- winbar = {
+        --   lualine_a = {},
+        --   lualine_b = {
+        --     {
+        --         "navic",
+        --         color_correction = nil,
+        --         navic_opts = nil,
+        --         separator = { left = '   ', right = '   ' },
+        --     }
+        --   },
+        --   lualine_c = {},
+        --   lualine_x = {},
+        --   lualine_y = {},
+        --   lualine_z = {}
+        -- },
+        -- inactive_winbar = {
+        --   lualine_a = {},
+        --   lualine_b = {},
+        --   lualine_c = {},
+        --   lualine_x = {},
+        --   lualine_y = {},
+        --   lualine_z = {}
+        -- },
         extensions = {
           "lazy",
           "mason",
@@ -401,6 +401,24 @@ return {
       cursor = "",
       texthl = "@text.environment",
     }
+  },
+  
+  --NOTE: Dim Inactive Code
+  {
+    "folke/twilight.nvim",
+    opts = {}
+  },
+
+  --NOTE: winbar
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
   },
 
 }
