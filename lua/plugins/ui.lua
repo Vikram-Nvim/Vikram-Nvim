@@ -418,7 +418,43 @@ return {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
     },
-    opts = {},
+    opts = {}
   },
+
+  --NOTE: ScrollBar
+  {
+    'Xuyuanp/scrollbar.nvim',
+    config = function()
+      vim.api.nvim_create_augroup("ScrollbarInit", { clear = true })
+      vim.api.nvim_create_autocmd({
+        "WinScrolled",
+        "VimResized",
+        "QuitPre",
+        "WinEnter",
+        "FocusGained"
+      }, {
+        pattern = "*",
+        callback = function()
+          require("scrollbar").show()
+        end,
+      })
+      vim.api.nvim_create_autocmd({
+        "WinLeave",
+        "BufLeave",
+        "BufWinLeave",
+        "FocusLost",
+      },{
+        pattern = "*",
+        callback = function()
+          require("scrollbar").clear()
+        end,
+      })
+    end
+  },
+
+  --NOTE: Smart Splits
+  -- {
+  --   'mrjones2014/smart-splits.nvim' 
+  -- },
 
 }

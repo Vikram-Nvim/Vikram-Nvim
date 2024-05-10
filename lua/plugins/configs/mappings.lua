@@ -16,7 +16,6 @@ function M.setup()
     ["<A-t>"] = { '<cmd>lua require("FTerm").toggle()<cr>', "Terminal" },
     ["<A-v>"] = { "<cmd>vsplit<cr>", "Split Vertically" },
     ["<A-h>"] = { "<cmd>split<cr>", "Split Horizontally" },
-
   }, { mode = "n" })
 
   --NOTE: Keymaps for Insert Mode without Prefix
@@ -28,7 +27,7 @@ function M.setup()
     ["<C-l>"] = { "<Right>", "Right" },
   }, { mode = "i" })
 
-  --NOTE: Keymaps for Normal, Insert  and Visual Mode without Prefix
+  --NOTE: Keymaps for Normal, Insert and Visual Mode without Prefix
   wk.register({
     ["<A-h>"] = { "<cmd>MoveHChar(-1)<cr>", "Move Char Left" },
     ["<A-j>"] = { "<cmd>MoveLine(1)<cr>", "Move Line Down" },
