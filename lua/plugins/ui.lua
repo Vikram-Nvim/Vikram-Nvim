@@ -457,4 +457,47 @@ return {
   --   'mrjones2014/smart-splits.nvim' 
   -- },
 
+  --TEST: 
+  {
+    "uga-rosa/ccc.nvim",
+    config = function()
+      local ccc = require("ccc")
+      local mapping = ccc.mapping
+      ccc.setup({
+        highlighter = {
+          auto_enable = true,
+        },
+        mappings = {
+          -- h = mapping.decrease5(),
+          -- l = mapping.increase5(),
+        },
+      })
+    end
+  },
+
+  --NOTE: LightBulb
+  {
+    'kosayoda/nvim-lightbulb',
+    opts = {
+      sign = {
+        enabled = false,
+        hl = "LightBulbSign",
+      },
+      virtual_text = {
+        enabled = true,
+      },
+    }
+  },
+  --TEST: 
+  {
+    'm-demare/hlargs.nvim',
+    opts = {}
+  },
+  --NOTE: Movement suggestions
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}
+  },
+
 }

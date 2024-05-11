@@ -79,11 +79,18 @@ return {
     dependencies = "nvim-lua/plenary.nvim",
   },
 
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = "InsertEnter",
+  --   opts = {},
+  -- },
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    opts = {},
+    'altermo/ultimate-autopair.nvim',
+    event={'InsertEnter','CmdlineEnter'},
+    branch='v0.6',
+    opts={},
   },
+  
   {
     "kylechui/nvim-surround",
     version = "*",
@@ -172,5 +179,11 @@ return {
     event = "BufRead",
     opts = {},
   },
+
+  {
+    "vuki656/package-info.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    opts = {}
+ },
 
 }

@@ -111,6 +111,7 @@ function M.setup()
         u = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
         b = { "<cmd>Telescope buffers<cr>", "Find Existing Buffers" },
         m = { "<cmd>Telescope media_files<CR>", "Find Media Files" },
+        i = { "<cmd>Telescope package_info<CR>", "Package Info" },
       },
 
       a = {
@@ -202,6 +203,15 @@ function M.setup()
         d = { vim.lsp.buf.definition, "Definition" },
         f = { vim.lsp.buf.references, "References" },
         c = { vim.lsp.buf.code_action, "Code Action" },
+      },
+
+      n = {
+        name = "Manage Packages",
+        t = { require("package-info").toggle, "Toggle" },
+        u = { require("package-info").update, "Update" },
+        d = { require("package-info").delete, "Delete" },
+        i = { require("package-info").install, "Install" },
+        c = { require("package-info").change_version, "Change Version" },
       },
 
       -- C = {
