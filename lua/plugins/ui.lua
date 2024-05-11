@@ -320,29 +320,29 @@ return {
             },
           }
         },
-        -- winbar = {
-        --   lualine_a = {},
-        --   lualine_b = {
-        --     {
-        --         "navic",
-        --         color_correction = nil,
-        --         navic_opts = nil,
-        --         separator = { left = '   ', right = '   ' },
-        --     }
-        --   },
-        --   lualine_c = {},
-        --   lualine_x = {},
-        --   lualine_y = {},
-        --   lualine_z = {}
-        -- },
-        -- inactive_winbar = {
-        --   lualine_a = {},
-        --   lualine_b = {},
-        --   lualine_c = {},
-        --   lualine_x = {},
-        --   lualine_y = {},
-        --   lualine_z = {}
-        -- },
+        winbar = {
+          lualine_a = {},
+          lualine_b = {
+            {
+                "navic",
+                color_correction = nil,
+                navic_opts = nil,
+                separator = { left = '   ', right = '   ' },
+            }
+          },
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        inactive_winbar = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {}
+        },
         extensions = {
           "lazy",
           "mason",
@@ -412,6 +412,7 @@ return {
   --NOTE: winbar
   {
     "utilyre/barbecue.nvim",
+    enabled = false,
     name = "barbecue",
     version = "*",
     dependencies = {
@@ -498,6 +499,29 @@ return {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {}
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = "neovim/nvim-lspconfig",
+    config = function()
+      local navic = require("nvim-navic")
+      navic.setup({
+        lsp = {
+          auto_attach = true,
+        },
+        highlight = false,
+        separator = "  ",
+      })
+    end
+  },
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim"
+    },
+    opts = { lsp = { auto_attach = true } },
   },
 
 }
