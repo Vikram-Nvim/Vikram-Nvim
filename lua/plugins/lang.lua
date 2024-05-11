@@ -75,6 +75,7 @@ return {
   -- Note Taking with Obsidian
   {
     "epwalsh/obsidian.nvim",
+    enabled = false,
     version = "*",
     lazy = true,
     ft = "markdown",
@@ -101,6 +102,9 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "b0o/schemastore.nvim",
   },
 
 }

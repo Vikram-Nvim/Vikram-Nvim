@@ -65,12 +65,9 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-    enabled = false,
       "nvim-treesitter/nvim-treesitter",
-    enabled = false,
     },
     opts = {
-    enabled = false,
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -95,7 +92,7 @@ return {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = false,
+        inc_rename = true,
         lsp_doc_border = false,
       },
     },
@@ -410,17 +407,16 @@ return {
   },
 
   --NOTE: winbar
-  {
-    "utilyre/barbecue.nvim",
-    enabled = false,
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {}
-  },
+  -- {
+  --   "utilyre/barbecue.nvim",
+  --   name = "barbecue",
+  --   version = "*",
+  --   dependencies = {
+  --     "SmiteshP/nvim-navic",
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   opts = {}
+  -- },
 
   --NOTE: ScrollBar
   {
@@ -489,12 +485,7 @@ return {
       },
     }
   },
-  --TEST: 
-  {
-    'm-demare/hlargs.nvim',
-    opts = {}
-  },
-  --NOTE: Movement suggestions
+  -- --NOTE: Movement suggestions
   {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
