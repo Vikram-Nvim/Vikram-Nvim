@@ -25,6 +25,7 @@ function M.setup()
     ["<C-j>"] = { "<Down>", "Down" },
     ["<C-k>"] = { "<Up>", "Up" },
     ["<C-l>"] = { "<Right>", "Right" },
+    ["<C-i>"] = { "<cmd>IconPickerInsert<cr>", "Pick Icon" },
   }, { mode = "i" })
 
   --NOTE: Keymaps for Normal, Insert and Visual Mode without Prefix
@@ -73,13 +74,12 @@ function M.setup()
       ["Z"] = { require("telescope").extensions.zoxide.list, "zoxide find" },
       --NOTE: Pick Color 
       ["C"] = { "<CMD>PickColor<CR>", "Pick Color" },
-      --NOTE: MarkdownPreview
-      ["p"] = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview" },
       --NOTE: Twilight
       ["h"] = { "<CMD>Twilight<CR>", "Toggle Twilight" },
       --NOTE: Barbecue 
-      ["B"] = { "<CMD>Barbecue<CR>", "Barbecue" },
-
+      -- ["B"] = { "<CMD>Barbecue<CR>", "Barbecue" },
+      -- NOTE: Icon Picker
+      ["i"] = { "<cmd>IconPickerNormal<cr>", "Pick Icon" },
       --NOTE: Keybind Groups
 
       z = {
@@ -226,6 +226,15 @@ function M.setup()
 
       }, {
         prefix = "<leader>",
+        mode = { "n", "v" },
+      })
+
+      --NOTE: Extra Mappings
+      wk.register({
+      --NOTE: MarkdownPreview
+      ["p"] = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview" },
+      }, {
+        prefix = "<leader><leader>",
         mode = { "n", "v" },
       })
 
