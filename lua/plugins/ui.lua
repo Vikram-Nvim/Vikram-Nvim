@@ -1,5 +1,5 @@
 return {
- {
+{
    'glepnir/dashboard-nvim',
    event = 'VimEnter',
    dependencies = 'nvim-tree/nvim-web-devicons',
@@ -65,12 +65,9 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-    enabled = false,
       "nvim-treesitter/nvim-treesitter",
-    enabled = false,
     },
     opts = {
-    enabled = false,
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -95,7 +92,7 @@ return {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = false,
+        inc_rename = true,
         lsp_doc_border = false,
       },
     },
@@ -401,6 +398,122 @@ return {
       cursor = "",
       texthl = "@text.environment",
     }
+  },
+  
+  --NOTE: Dim Inactive Code
+  {
+    "folke/twilight.nvim",
+    opts = {}
+  },
+
+  --NOTE: winbar
+  -- {
+  --   "utilyre/barbecue.nvim",
+  --   name = "barbecue",
+  --   version = "*",
+  --   dependencies = {
+  --     "SmiteshP/nvim-navic",
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   opts = {}
+  -- },
+
+  --NOTE: ScrollBar
+  {
+    'Xuyuanp/scrollbar.nvim',
+    config = function()
+      vim.api.nvim_create_augroup("ScrollbarInit", { clear = true })
+      vim.api.nvim_create_autocmd({
+        "WinScrolled",
+        "VimResized",
+        "QuitPre",
+        "WinEnter",
+        "FocusGained"
+      }, {
+        pattern = "*",
+        callback = function()
+          require("scrollbar").show()
+        end,
+      })
+      vim.api.nvim_create_autocmd({
+        "WinLeave",
+        "BufLeave",
+        "BufWinLeave",
+        "FocusLost",
+      },{
+        pattern = "*",
+        callback = function()
+          require("scrollbar").clear()
+        end,
+      })
+    end
+  },
+
+  --NOTE: Smart Splits
+  -- {
+  --   'mrjones2014/smart-splits.nvim' 
+  -- },
+
+  --TEST: 
+  {
+    "uga-rosa/ccc.nvim",
+    config = function()
+      local ccc = require("ccc")
+      local mapping = ccc.mapping
+      ccc.setup({
+        highlighter = {
+          auto_enable = true,
+        },
+        mappings = {
+          -- h = mapping.decrease5(),
+          -- l = mapping.increase5(),
+        },
+      })
+    end
+  },
+
+  --NOTE: LightBulb
+  {
+    'kosayoda/nvim-lightbulb',
+    opts = {
+      sign = {
+        enabled = false,
+        hl = "LightBulbSign",
+      },
+      virtual_text = {
+        enabled = true,
+      },
+    }
+  },
+  -- --NOTE: Movement suggestions
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      local navic = require("nvim-navic")
+      navic.setup({
+        lsp = {
+          auto_attach = true,
+        },
+        highlight = false,
+        separator = "  ",
+      })
+    end
+  },
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim"
+    },
+    opts = { lsp = { auto_attach = true } },
   },
 
 }

@@ -11,6 +11,7 @@ return {
         },
         auto_install = true,
         highlight = { enable = true },
+        --BUG: THIS OPTION ALSO COUSES "STACK CORRUPTION ERROR"
         -- indent = { enable = true },
 
         highlight = {
@@ -63,6 +64,14 @@ return {
   },
   {
     "numToStr/FTerm.nvim",
+    opts = {
+      dimensions = {
+        height = 0.8, 
+        width = 0.8,
+        x = 0.5, 
+        y = 0.5, 
+    },
+    }
   },
 
   {
@@ -70,11 +79,18 @@ return {
     dependencies = "nvim-lua/plenary.nvim",
   },
 
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = "InsertEnter",
+  --   opts = {},
+  -- },
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    opts = {},
+    'altermo/ultimate-autopair.nvim',
+    event={'InsertEnter','CmdlineEnter'},
+    branch='v0.6',
+    opts={},
   },
+  
   {
     "kylechui/nvim-surround",
     version = "*",
@@ -163,5 +179,11 @@ return {
     event = "BufRead",
     opts = {},
   },
+
+  {
+    "vuki656/package-info.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    opts = {}
+ },
 
 }

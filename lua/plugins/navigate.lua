@@ -2,10 +2,13 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.configs.which-key").setup()
-    end,
-  },
+      config = function()
+          require("plugins.configs.mappings").setup()
+        end,
+      -- config = function()
+        --   require("plugins.configs.which-key").setup()
+        -- end,
+      },
 
   {
     "folke/flash.nvim",
@@ -75,6 +78,9 @@ return {
               path = vim.fn.stdpath("config") .. "/lua/core/theme.lua" 
             }
           },
+          package_info = {
+            theme = "ivy",
+          },
         },
         mappings = {
           n = { ["q"] = action.close },
@@ -86,6 +92,7 @@ return {
       lx('project')
       lx('themes')
       lx('zoxide')
+      lx('package_info')
       -- lx('colorscheme')
       -- lx("fzf")
       -- lx("fzy_native")
@@ -198,6 +205,41 @@ return {
     'echasnovski/mini.files', 
     version = '*',
     opts = {},
+  },
+
+  --NOTE: Move Nvim
+  { 
+    'fedepujol/move.nvim',
+    opts = {}
+  },
+
+--BUG: 
+--  {
+--    "ahmedkhalf/project.nvim",
+--    opts = {},
+--  },
+
+  --NOTE: Replace w, e, b motion
+  {
+    "chrisgrieser/nvim-spider",
+    lazy = true,
+    keys = {
+      {
+        "w",
+        "<cmd>lua require('spider').motion('w')<CR>",
+        mode = { "n", "o", "x" },
+      },
+      {
+        "e",
+        "<cmd>lua require('spider').motion('e')<CR>",
+        mode = { "n", "o", "x" },
+      },
+      {
+        "b",
+        "<cmd>lua require('spider').motion('b')<CR>",
+        mode = { "n", "o", "x" },
+      },
+    },
   },
 
 }
