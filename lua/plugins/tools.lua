@@ -196,4 +196,9 @@ return {
    opts = {}
  },
 
+ --NOTE: CommentBox
+ {
+   "LudoPinelli/comment-box.nvim",
+ },
+
 }

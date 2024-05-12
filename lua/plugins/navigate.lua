@@ -36,23 +36,42 @@ return {
       local action = require("telescope.actions")
 
       ts.setup({
+        --NOTE: Old Layout
+        -- defaults = {
+        --   theme = "custom", 
+        --   results_title = false,
+        --   prompt_prefix = "   ",
+        --   selection_caret = "  ",
+        --   entry_prefix = "  ",
+        --   initial_mode = "insert",
+        --   sorting_strategy = "ascending",
+        --   layout_strategy = "center", --center, cursor, bottom_pane
+        --   layout_config = {
+        --     preview_cutoff = 1,
+        --     width = function(_, max_columns, _)
+        --       return math.min(max_columns, 80)
+        --     end,
+        --     height = function(_, _, max_lines)
+        --       return math.min(max_lines, 15)
+        --     end,
+        --   },
+        -- },
+        --NOTE: New Layout
         defaults = {
-          theme = "custom", 
-          results_title = false,
-          prompt_prefix = "   ",
+          prompt_prefix = " 🔭 ",
           selection_caret = "  ",
           entry_prefix = "  ",
           initial_mode = "insert",
-          sorting_strategy = "ascending",
-          layout_strategy = "center", --center, cursor, bottom_pane
+          results_title = false,
+          sorting_strategy = 'ascending',
+          preview = { hide_on_startup = true },
+          layout_strategy = 'vertical', -- HORIZONTAL, VERTICAL, FLEX
           layout_config = {
-            preview_cutoff = 1,
-            width = function(_, max_columns, _)
-              return math.min(max_columns, 80)
-            end,
-            height = function(_, _, max_lines)
-              return math.min(max_lines, 15)
-            end,
+            vertical = {
+              prompt_position = 'top',
+              preview_cutoff = 10,
+              preview_height = 0.4,
+            },
           },
         },
         pickers = {
@@ -60,17 +79,17 @@ return {
             enable_preview = true
           },
           find_files = {
-            theme = "dropdown", -- cursor, ivy, dropdown
+            -- theme = "dropdown", -- cursor, ivy, dropdown
           }
         },
         extensions = {
           themes = {
-            layout_config = {
-              horizontal = {
-                width = 0.8,
-                height = 0.7,
-              },
-            },
+            -- layout_config = {
+            --   horizontal = {
+            --     width = 0.8,
+            --     height = 0.7,
+            --   },
+            -- },
             enable_previewer = true, 
             enable_live_preview = true,
             persist = {
@@ -83,7 +102,14 @@ return {
           },
         },
         mappings = {
-          n = { ["q"] = action.close },
+          n = {
+            ["q"] = action.close,
+						['o'] = require('telescope.actions.layout').toggle_preview,
+						['<C-q>'] = require('telescope.actions').close,
+					},
+					i = {
+						['<C-o>'] = require('telescope.actions.layout').toggle_preview,
+					},
         },
       })
       lx("noice")

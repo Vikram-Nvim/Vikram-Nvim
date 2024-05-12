@@ -58,7 +58,7 @@ function M.setup()
       ["/"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "Comment Toggle" },
        --NOTE: Neotree
       ["e"] = { "<cmd>Neotree focus<CR>", "NeoTree" },
-      ["c"] = { "<cmd>Neotree close<CR>", "Neotree Close" },
+      ["E"] = { "<cmd>Neotree close<CR>", "Neotree Close" },
       -- ["c"] = { "<cmd>Ex<CR>", "" },
       -- ["leader>"] = { "=ap", "Format" },
       --NOTE: Ufo Folds
@@ -81,9 +81,9 @@ function M.setup()
       -- NOTE: Icon Picker
       ["i"] = { "<cmd>IconPickerNormal<cr>", "Pick Icon" },
       --NOTE: Keybind Groups
-
+      
       z = {
-        name = "Lazy",
+        name = "💤 Lazy",
         z = { "<cmd>Lazy<cr>", "Lazy" },
         c = { "<cmd>Lazy check<cr>", "Check" },
         C = { "<cmd>Lazy clean<cr>", "Clean" },
@@ -96,7 +96,7 @@ function M.setup()
 
       --NOTE: Telescope
       f = {
-        name = "Telescope",
+        name = " Telescope",
         p = { "<cmd>Telescope project<CR>", "Find Projects" },
         P = { "<cmd>Telescope planets<CR>", "Find Planets" },
         t = { "<cmd>Telescope themes<CR>", "Themes" },
@@ -115,14 +115,14 @@ function M.setup()
       },
 
       a = {
-        name = "ChatGPT",
+        name = "󰚩 ChatGPT",
         o = { "<cmd>ChatGPT<CR>", "ChatGPT Open" },
         a = { "<cmd>ChatGPTActAs<CR>", "ChatGPT ActAs" },
         e = { "<cmd>ChatGPTEditWithInstructions<CR>", "ChatGPT Edit w Ins" },
       },
 
       d = {
-        name = "Debugger",
+        name = " Debugger",
         b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
         c = { "<cmd>DapContinue<CR>", "Continue" },
         o = { "<cmd>DapStepOver<CR>", "Step Over" },
@@ -133,7 +133,7 @@ function M.setup()
       },
 
       h = {
-        name = "Harpoon",
+        name = "󱤙 Harpoon",
         m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark" },
         o = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Open" },
         p = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Previos" },
@@ -142,7 +142,7 @@ function M.setup()
       },
 
       t = {
-        name = "TSTools",
+        name = "󰛦 TSTools",
         o = { "<cmd>TSToolsOrganizeImports<cr>", "Organize" },
         s = { "<cmd>TSToolsSortImports<cr>", "Sort" },
         r = { "<cmd>TSToolsRemoveUnusedImports<cr>", "Remove Unused" },
@@ -155,7 +155,7 @@ function M.setup()
       },
 
       o = {
-        name = "Obsodian",
+        name = "󰠮 Obsodian",
         n = { "<cmd>ObsidianNew<CR>", "Create New <Create>" },
         o = { "<cmd>ObsidianOpen<CR>", "Open <Title>" },
         s = { "<cmd>ObsidianQuickSwitch<CR>", "Quick Switch" },
@@ -178,7 +178,7 @@ function M.setup()
       },
 
       T = {
-        name = "Trouble",
+        name = " Trouble",
         d = { "<cmd>Trouble diagnostics toggle<cr>", "Diagonostics" },
         b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagonostics" },
         s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
@@ -188,7 +188,7 @@ function M.setup()
       },
 
       S = {
-        name = "Sessions",
+        name = " Sessions",
         s = { "<cmd>SessionSave<cr>", "Save" },
         r = { "<cmd>SessionRestore<cr>", "Restore" },
         d = { "<cmd>SessionDelete<cr>", "Delete" },
@@ -197,7 +197,7 @@ function M.setup()
       },
 
       l = {
-        name = "Lsp",
+        name = "󰛥 Lsp",
         k = { vim.lsp.buf.hover, "Hover" },
         r = { vim.lsp.buf.rename, "Rename" },
         d = { vim.lsp.buf.definition, "Definition" },
@@ -206,7 +206,7 @@ function M.setup()
       },
 
       n = {
-        name = "Manage Packages",
+        name = "󰏓 Manage Packages",
         t = { require("package-info").toggle, "Toggle" },
         u = { require("package-info").update, "Update" },
         d = { require("package-info").delete, "Delete" },
@@ -214,8 +214,17 @@ function M.setup()
         c = { require("package-info").change_version, "Change Version" },
       },
 
+      c = {
+        name = "◫ Boxes",
+        b = { "<Cmd>CBccbox<CR>", "Box Title" },
+        t = { "<Cmd>CBllline<CR>", "Titled Line" },
+        l = { "<Cmd>CBline<CR>", "Simple Line" },
+        m = { "<Cmd>CBllbox14<CR>", "Marked" },
+        d = { "<Cmd>CBd<CR>", "Remove a box" },
+      },
+
       -- C = {
-        --   name = "Colortils",
+        --   name = "󰌁 Colortils",
         --   p = { "<CMD>Colortils picker<CR>", "Picker" },
         --   l = { "<CMD>Colortils lighten<CR>", "Lighten" },
         --   d = { "<CMD>Colortils darken<CR>", "Darken" },
@@ -234,6 +243,7 @@ function M.setup()
       --NOTE: MarkdownPreview
       ["p"] = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview" },
       }, {
+        name = " Extra Mappings",
         prefix = "<leader><leader>",
         mode = { "n", "v" },
       })
@@ -268,12 +278,12 @@ function M.setup()
         },
         icons = {
           breadcrumb = "»",
-          separator = "➜", 
-          group = "+", 
+          separator = "", 
+          group = "", 
         },
         popup_mappings = {
-          scroll_down = "<C-d>",
           scroll_up = "<C-u>", 
+          scroll_down = "<C-d>",
         },
         window = {
           border = "single",       
