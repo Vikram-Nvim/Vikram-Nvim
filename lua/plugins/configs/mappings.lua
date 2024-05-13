@@ -112,6 +112,7 @@ function M.setup()
         b = { "<cmd>Telescope buffers<cr>", "Find Existing Buffers" },
         m = { "<cmd>Telescope media_files<CR>", "Find Media Files" },
         i = { "<cmd>Telescope package_info<CR>", "Package Info" },
+        z = { "<cmd>Telescope lazy_plugins<CR>", "Lazy Plugins" },
       },
 
       a = {

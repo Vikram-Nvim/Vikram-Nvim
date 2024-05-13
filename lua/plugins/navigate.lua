@@ -28,6 +28,7 @@ return {
       "nvim-telescope/telescope-media-files.nvim",
       "nvim-telescope/telescope-github.nvim",
       'andrew-george/telescope-themes',
+      "polirritmico/telescope-lazy-plugins.nvim",
     },
     config = function()
       local ts = require("telescope")
@@ -119,6 +120,7 @@ return {
       lx('themes')
       lx('zoxide')
       lx('package_info')
+      lx("lazy_plugins")
       -- lx('colorscheme')
       -- lx("fzf")
       -- lx("fzy_native")
