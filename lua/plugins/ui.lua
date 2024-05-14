@@ -569,4 +569,9 @@ return {
     }
   },
 
+  --NOTE: Rainbow Delimiters
+  {
+    "HiPhish/rainbow-delimiters.nvim"
+  },
+
 }
