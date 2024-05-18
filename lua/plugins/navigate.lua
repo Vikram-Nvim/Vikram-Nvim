@@ -139,20 +139,19 @@ return {
 
   {
     'stevearc/oil.nvim',
-    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       default_file_explorer = true,
       columns = {
         "icon",
         -- "permissions",
-        -- "size",
         -- "mtime",
       },
       delete_to_trash = true,
       skip_confirm_for_simple_edits = false,
       prompt_save_on_select_new_entry = true,
       cleanup_delay_ms = 2000,
+      -- "size",
       -- lsp_rename_autosave = true,
       -- lsp_file_methods.autosave_changes = true,
       keymaps = {
@@ -162,6 +161,7 @@ return {
         ["<C-h>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
         ["<C-p>"] = "actions.preview",
+        ["q"] = "actions.close",
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
         ["-"] = "actions.parent",
@@ -229,11 +229,11 @@ return {
   },
 
   --NOTE: replacement for oil.nvim
-  { 
-    'echasnovski/mini.files', 
-    version = '*',
-    opts = {},
-  },
+  -- { 
+  --   'echasnovski/mini.files', 
+  --   version = '*',
+  --   opts = {},
+  -- },
 
   --NOTE: Move Nvim
   { 

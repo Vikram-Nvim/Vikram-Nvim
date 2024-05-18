@@ -7,12 +7,12 @@ function M.setup()
     [";"] = { ":", "Cmd" },
     ["<Tab>"] = { "<cmd>bnext<cr>", "Next Buffer" },
     ["<S-Tab>"] = { "<cmd>bprevious<cr>", "Previous Buffer" },
-    ["-"] = { "<cmd>lua MiniFiles.open()<cr>", "Files" },
+    ["-"] = { "<cmd>Oil<cr>", "Files" },
+    -- ["-"] = { "<cmd>lua MiniFiles.open()<cr>", "Files" },
     -- map("n", "<C-d>", "<C-d>zz", default_opts)
     -- map("n", "<C-u>", "<C-u>zz", default_opts)
     -- map("n", "n", "nzzzv", default_opts)
     -- map("n", "N", "Nzzzv", default_opts)
-    -- map("n", "-", "<CMD>Oil<CR>", { desc = "Files" })
     ["<A-t>"] = { '<cmd>lua require("FTerm").toggle()<cr>', "Terminal" },
     ["<A-v>"] = { "<cmd>vsplit<cr>", "Split Vertically" },
     ["<A-h>"] = { "<cmd>split<cr>", "Split Horizontally" },
