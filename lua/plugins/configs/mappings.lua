@@ -16,6 +16,7 @@ function M.setup()
     ["<A-t>"] = { '<cmd>lua require("FTerm").toggle()<cr>', "Terminal" },
     ["<A-v>"] = { "<cmd>vsplit<cr>", "Split Vertically" },
     ["<A-h>"] = { "<cmd>split<cr>", "Split Horizontally" },
+    --NOTE: Flash
   }, { mode = "n" })
 
   --NOTE: Keymaps for Insert Mode without Prefix
