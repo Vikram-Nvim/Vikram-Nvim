@@ -261,6 +261,7 @@ return {
         options = {
           -- theme = "catppuccin", 
           -- theme = custom,
+          theme = "auto",
           globalstatus = true,
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
@@ -322,9 +323,10 @@ return {
           lualine_b = {
             {
                 "navic",
-                color_correction = nil,
-                navic_opts = nil,
-                separator = { left = '   ', right = '   ' },
+                -- color_correction = nil,
+                -- navic_opts = nil,
+                separator = { left = "", right = "" },
+                padding = { left = 4 },
             }
           },
           lualine_c = {},
@@ -499,11 +501,48 @@ return {
     config = function()
       local navic = require("nvim-navic")
       navic.setup({
+        icons = {
+          File          = "󰈙 ",
+          Module        = " ",
+          Namespace     = "󰌗 ",
+          Package       = " ",
+          Class         = "󰌗 ",
+          Method        = "󰆧 ",
+          Property      = " ",
+          Field         = " ",
+          Constructor   = " ",
+          Enum          = "󰕘 ",
+          Interface     = "󰕘 ",
+          Function      = "󰊕 ",
+          Variable      = "󰆧 ",
+          Constant      = "󰏿 ",
+          String        = "󰀬 ",
+          Number        = "󰎠 ",
+          Boolean       = "◩ ",
+          Array         = "󰅪 ",
+          Object        = "󰅩 ",
+          Key           = "󰌋 ",
+          Null          = "󰟢 ",
+          EnumMember    = " ",
+          Struct        = "󰌗 ",
+          Event         = " ",
+          Operator      = "󰆕 ",
+          TypeParameter = "󰊄 ",
+        },
         lsp = {
           auto_attach = true,
+          preference = nil,
         },
-        highlight = false,
+        highlight = true,
         separator = "  ",
+        depth_limit = 0,
+        depth_limit_indicator = "..",
+        safe_output = true,
+        lazy_update_context = false,
+        click = true,
+        format_text = function(text)
+          return text
+        end,
       })
     end
   },
@@ -514,6 +553,25 @@ return {
       "MunifTanjim/nui.nvim"
     },
     opts = { lsp = { auto_attach = true } },
+  },
+  {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      groups = { -- table: default groups
+    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+    'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+    'EndOfBuffer',
+  },
+  extra_groups = {}, 
+  exclude_groups = {},
+    }
+  },
+
+  --NOTE: Rainbow Delimiters
+  {
+    "HiPhish/rainbow-delimiters.nvim"
   },
 
 }

@@ -10,9 +10,8 @@ return {
           "lua", "vim", "regex", "bash", "markdown", "markdown_inline", "html", "css", "javascript",  "typescript", "tsx", "norg", "json", "python", "gitignore", "git_config", "jsonc"
         },
         auto_install = true,
-        highlight = { enable = true },
-        --BUG: THIS OPTION ALSO COUSES "STACK CORRUPTION ERROR"
-        -- indent = { enable = true },
+        highlight = { enable = true }, 
+        -- indent = { enable = true },--BUG: THIS OPTION ALSO COUSES "STACK CORRUPTION ERROR"
 
         highlight = {
           enable = true,
@@ -184,6 +183,22 @@ return {
     "vuki656/package-info.nvim",
     dependencies = "MunifTanjim/nui.nvim",
     opts = {}
+ },
+
+ --TEST:
+ -- {
+ --   "cshuaimin/ssr.nvim",
+ -- },
+ 
+ --NOTE: Nerd Icon Picker
+ {
+   "ziontee113/icon-picker.nvim",
+   opts = {}
+ },
+
+ --NOTE: CommentBox
+ {
+   "LudoPinelli/comment-box.nvim",
  },
 
 }
